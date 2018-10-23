@@ -1,0 +1,15 @@
+{
+  "name": "stravanator",
+  "version": "1.0.0",
+  "description": "A Strava activity name generator",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jasmine"
+  },
+  "keywords": [
+    "capstone",
+    "project"
+  ],
+  "author": "Emily Haag",
+  "license": "ISC"
+}
