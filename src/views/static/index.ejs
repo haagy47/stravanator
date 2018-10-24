@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./partials/head.ejs %>
+  </head>
+  <body>
+
+      <!-- Navigation -->
+      <% include ./partials/navbar.ejs %>
+
+      <!-- Page Content -->
+      <main class="container">
+
+        <!-- Jumbotron Header -->
+        <header class="jumbotron my-4">
+          <h1 class="display-3">Welcome to Stravanator</h1>
+          <p class="lead">An application for users to generate Strava activity names.</p>
+        </header>
+
+        <!-- Page Features -->
+        <section class="row text-center">
+
+          <section class="col-lg-6 home-section">
+            <h4 class="card-title">New to Strava</h4>
+            <a href="#" class="btn btn-style btn-lg">Sign Up</a>
+          </section>
+
+          <section class="col-lg-6 home-section">
+            <h4 class="card-title">Already on Strava</h4>
+            <a href="#" class="btn btn-style btn-lg">Sign In</a>
+          </section>
+
+        </section>
+        <!-- /.row -->
+
+      </main>
+      <!-- /.container -->
+      <% include ./partials/baseScripts.ejs %>
+
+    </body>
+</html>
