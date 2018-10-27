@@ -1,6 +1,6 @@
 const passport = require("passport");
 //const LocalStrategy = require("passport-local").Strategy;
-const StravaStrategy = require('passport-strava').Strategy;
+const StravaStrategy = require('passport-strava-oauth2').Strategy;
 const User = require("../db/models").User;
 const authHelper = require("../auth/helpers");
 
@@ -10,16 +10,36 @@ module.exports = {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    /*const stravaConfig = {
+      clientID: process.env.STRAVA_CLIENT_ID,
+      clientSecret: process.env.STRAVA_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/users/dashboard"
+    }
+
+    const strategy = new StravaStrategy(stravaConfig, (accessToken, refreshToken, profile, done) => {
+      const stravaId = profile.id
+      const name = profile.displayName
+      const email = profile.emails[0].value
+      User.find({where: {stravaId}})
+        .then(foundUser => (foundUser
+          ? done(null, foundUser)
+          : User.create({name, email, stravaId})
+            .then(createdUser => done(null, createdUser))
+        ))
+        .catch(done)
+    })*/
+
     // Passport strava auth example
 
     //var StravaStrategy = require('passport-strava').Strategy;
 
     passport.use(new StravaStrategy({
-        clientID: process.env.StravaClientID,
-        clientSecret: process.env.StravaClientSecret,
+        clientID: process.env.STRAVA_CLIENT_ID,
+        clientSecret: process.env.STRAVA_CLIENT_SECRET,
         callbackURL: "http://localhost:3000/users/dashboard"
       },
       function(accessToken, refreshToken, profile, cb) {
+        console.log(profile)
         User.findOrCreate({ stravaId: profile.id }, function (err, user) {
           return cb(err, user);
         });
